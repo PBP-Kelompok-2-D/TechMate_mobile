@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:techmate_mobile/routes/menu.dart';
+import 'package:techmate_mobile/routes/forum_page.dart';
 import 'package:techmate_mobile/routes/profile_page.dart';
 
 class BottomNav extends StatelessWidget {
@@ -40,16 +41,28 @@ class BottomNav extends StatelessWidget {
             onPressed: null,
           ),
 
-          // 3. Forum (Belum ada halaman -> tanpa navigasi)
-          const IconButton(
-            icon: Icon(Icons.forum_rounded, color: Colors.grey),
-            onPressed: null,
+          // 3. Forum
+          IconButton(
+            icon: Icon(
+              Icons.forum_rounded,
+              color: currentIndex == 2
+                  ? const Color.fromARGB(255, 255, 255, 255)
+                  : Colors.grey,
+            ),
+            onPressed: () {
+              if (currentIndex != 2) {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ForumPage()),
+                );
+              }
+            },
           ),
 
           // 4. Shop (Belum ada halaman -> tanpa navigasi)
           const IconButton(
             icon: Icon(Icons.shopping_bag_rounded, color: Colors.grey),
-            onPressed: null,  
+            onPressed: null,
           ),
 
           // 5. Profile
